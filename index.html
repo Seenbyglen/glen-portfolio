@@ -595,6 +595,35 @@
     @media (max-width: 600px) {
       .nav-links { display: none; }
       .photo-grid { grid-template-columns: 1fr; }
+
+      #home {
+        padding: 5rem 1.5rem 3rem;
+        text-align: left;
+      }
+
+      .hero-quote {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      #typewriter-text {
+        font-size: 1.4rem !important;
+        line-height: 1.65 !important;
+      }
+
+      #typewriter-text span {
+        display: block;
+        margin-top: 0.5rem;
+      }
+
+      .album-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-scroll {
+        margin-top: 2rem;
+      }
     }
   </style>
 </head>
@@ -615,7 +644,7 @@
   <!-- HERO -->
   <section id="home">
     <div class="hero-quote">
-      <p id="typewriter-text" style="font-family:var(--serif);font-size:clamp(1.7rem, 3.5vw, 2.8rem);font-style:italic;line-height:1.75;color:var(--text);margin:0;"></p>
+      <p id="typewriter-text" style="font-family:var(--serif);font-size:clamp(1.25rem, 5vw, 2.8rem);font-style:italic;line-height:1.75;color:var(--text);margin:0;"></p>
     </div>
 
     <p class="hero-scroll fade-in">Scroll to explore</p>
