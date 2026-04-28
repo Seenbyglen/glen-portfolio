@@ -213,9 +213,10 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 380px 1fr;
       gap: 4rem;
       align-items: start;
+      max-width: 1000px;
     }
 
     .about-image {
@@ -225,7 +226,8 @@
 
     .about-image img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: auto;
+      max-height: 480px;
       object-fit: cover;
       object-position: top;
       display: block;
