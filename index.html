@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Glen Edward | Portfolio & Research</title>
+  <title>Photography — Glen Edward</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- ════════════════════════════════════════
-       STYLES & COLORS (edit colors in :root)
-  ════════════════════════════════════════ -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #FAFAF8;
-      --bg-alt: #DDCBB7;
-      --text: #264025;
-      --muted: #7B4B36;
-      --accent: #AD6B4B;
-      --accent-light: #82896E;
-      --border: #D4C4B0;
+      --bg: #0A0908;
+      --text: #F2F4F3;
+      --muted: #A9927D;
+      --accent: #A9927D;
+      --accent-light: #5E503F;
+      --border: #5E503F;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Jost', system-ui, sans-serif;
     }
@@ -32,12 +28,11 @@
       background: var(--bg);
       color: var(--text);
       font-weight: 300;
-      font-size: 18px;
-      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
 
-    /* ── NAV ────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -45,29 +40,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 4rem;
-      background: rgba(250,250,248,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 3rem;
+      background: rgba(10,9,8,0.95);
+      backdrop-filter: blur(10px);
     }
 
     .nav-name {
       font-family: var(--serif);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 400;
-      letter-spacing: 0.02em;
       text-decoration: none;
       color: var(--text);
+      letter-spacing: 0.02em;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
     .nav-links a {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -76,709 +70,357 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
 
-    /* ── HERO ───────────────────────────────────────── */
-    #home {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 7rem 4rem 4rem;
-      text-align: center;
+    /* ── MASONRY GRID ── */
+    .grid-container {
+      padding: 6rem 1.5rem 4rem;
+      columns: 3;
+      column-gap: 6px;
     }
 
-    .hero-scroll {
-      margin-top: 4rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .hero-scroll::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--accent-light);
-    }
-
-    .hero-quote {
-      margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ── ALBUMS ─────────────────────────────────────── */
-    .album-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .album-card {
+    .grid-item {
+      break-inside: avoid;
+      margin-bottom: 6px;
       cursor: pointer;
-      overflow: hidden;
-    }
-
-    .album-cover {
-      aspect-ratio: 3 / 4;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s;
+      display: block;
     }
 
-    .album-card:hover .album-cover {
-      border-color: var(--accent-light);
+    .grid-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: brightness(0.92);
     }
 
-    .album-overlay {
+    .grid-item:hover img {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+
+    .grid-item-overlay {
       position: absolute;
       inset: 0;
+      background: rgba(17,17,16,0);
+      transition: background 0.3s;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1.5rem;
-      background: linear-gradient(to top, rgba(28,28,26,0.5) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.35s;
+      align-items: flex-end;
+      padding: 1.25rem;
     }
 
-    .album-card:hover .album-overlay {
-      opacity: 1;
+    .grid-item:hover .grid-item-overlay {
+      background: rgba(17,17,16,0.35);
     }
 
-    .album-name {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #FAFAF8;
-      display: block;
-    }
-
-    .album-view {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+    .grid-item-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(250,250,248,0.7);
-      margin-top: 0.35rem;
-      display: block;
+      color: rgba(250,250,248,0);
+      transition: color 0.3s;
+      font-family: var(--sans);
     }
 
-    .album-meta {
-      font-size: 0.72rem;
-      letter-spacing:0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.75rem;
+    .grid-item:hover .grid-item-label {
+      color: rgba(250,250,248,0.8);
     }
 
-    /* ── SECTIONS (shared) ──────────────────────────── */
-    section {
-      padding: 5rem 4rem;
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,9,8,0.98);
+      z-index: 1000;
+      overflow-y: auto;
     }
 
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .section-label {
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── ABOUT ──────────────────────────────────────── */
-    #about { background: var(--bg-alt); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 4rem;
-      align-items: start;
+    .lightbox-inner {
       max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
     }
 
-    .about-image {
-      position: sticky;
-      top: 7rem;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      max-height: 480px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    .about-text p {
-      color: var(--text);
-      line-height: 1.85;
-      margin-bottom: 1.25rem;
-      font-size: 1.15rem;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    /* ── PHOTOGRAPHY ────────────────────────────────── */
-    #photography {}
-
-    .photo-note {
-      margin-top: 2.5rem;
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--muted);
-      font-size: 1.25rem;
-    }
-
-    /* ── RESEARCH ───────────────────────────────────── */
-    #research { background: var(--bg-alt); }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .research-item {
-      background: var(--bg);
-      padding: 2.5rem 2.75rem;
-      transition: background 0.2s;
-    }
-
-    .research-item:hover { background: #EFECE5; }
-
-    .research-type {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .research-title {
-      font-family: var(--serif);
-      font-size: 1.45rem;
-      font-weight: 400;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-
-    .research-desc {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* ── CONTACT ────────────────────────────────────── */
-    #contact {
-      background: #264025;
-      color: var(--bg);
-    }
-
-    #contact .section-label { color: var(--accent-light); }
-    #contact .section-rule { background: #3D5C3C; }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .contact-heading {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-note {
-      font-size: 0.95rem;
-      color: #A8B5A2;
-      line-height: 1.75;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #7A786F;
-      font-weight: 400;
-    }
-
-    .form-input,
-    .form-textarea {
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #3D5C3C;
-      padding: 0.75rem 0;
-      color: var(--bg);
-      font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color 0.2s;
-      resize: none;
-    }
-
-    .form-input::placeholder,
-    .form-textarea::placeholder { color: #5A7A58; }
-
-    .form-input:focus,
-    .form-textarea:focus { border-color: var(--accent-light); }
-
-    .form-submit {
-      align-self: flex-start;
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: transparent;
-      border: 1px solid var(--bg);
-      color: var(--bg);
-      padding: 0.85rem 2rem;
-      cursor: pointer;
-      font-family: var(--sans);
-      font-weight: 400;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .form-submit:hover {
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .footer {
-      background: #264025;
-      color: #82896E;
-      padding: 2rem 4rem;
+    .lightbox-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #1a2b19;
-      font-size: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .lightbox-title {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .lightbox-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover { color: var(--text); }
+
+    .lightbox-grid {
+      columns: 2;
+      column-gap: 6px;
+    }
+
+    .lightbox-grid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 6px;
+      break-inside: avoid;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(250,250,248,0.06);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
+      color: var(--muted);
     }
 
-    /* ── FADE-IN ─────────────────────────────────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    /* ── RESPONSIVE ─────────────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 1.25rem 2rem; }
-      nav .nav-links { gap: 1.5rem; }
-      section { padding: 5rem 2rem; }
-      #home { padding: 0 2rem 5rem; }
-      .about-grid,
-      .contact-layout,
-      .research-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-image { position: static; }
-      .footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .grid-container { columns: 2; }
+      nav { padding: 1rem 1.5rem; }
     }
 
     @media (max-width: 600px) {
+      .grid-container { columns: 1; padding: 5rem 0.75rem 3rem; }
       .nav-links { display: none; }
-
-      #home {
-        padding: 5rem 1.5rem 3rem;
-        text-align: left;
-      }
-
-      .hero-quote {
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-      }
-
-      #typewriter-text {
-        font-size: 1.4rem !important;
-        line-height: 1.65 !important;
-      }
-
-      #typewriter-text span {
-        display: block;
-        margin-top: 0.5rem;
-      }
-
-      .album-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-scroll {
-        margin-top: 2rem;
-      }
+      .lightbox-grid { columns: 1; }
     }
   </style>
 </head>
 <body>
 
   <!-- ════════════════════════════════════════
-       NAV HEADER
+       NAV
   ════════════════════════════════════════ -->
-  <!-- NAV -->
   <nav>
-    <a href="#home" class="nav-name">Glen Edward, M.Ed.</a>
+    <a href="index.html" class="nav-name">Glen Edward, M.Ed.</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#photography">Photography</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html" class="active">Photography</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="info.html">Info</a></li>
     </ul>
   </nav>
 
   <!-- ════════════════════════════════════════
-       HERO / OPENING QUOTE
+       MASONRY PHOTO GRID
   ════════════════════════════════════════ -->
-  <!-- HERO -->
-  <section id="home">
-    <div class="hero-quote">
-      <p id="typewriter-text" style="font-family:var(--serif);font-size:clamp(1.25rem, 5vw, 2.8rem);font-style:italic;line-height:1.75;color:var(--text);margin:0;"></p>
-    </div>
-    <p class="hero-scroll fade-in">Scroll to explore</p>
-  </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const el = document.getElementById('typewriter-text');
-      const quoteWrap = document.querySelector('.hero-quote');
-
-      el.innerHTML = '\u201cTo see someone and center their story is to say: you were here, you mattered, and I was paying attention.\u201d <span style="font-family:var(--sans);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;font-style:normal;color:var(--accent);vertical-align:middle;">&nbsp;&mdash; Glen Edward</span>';
-
-      quoteWrap.style.opacity = '0';
-      quoteWrap.style.transform = 'translateY(12px)';
-      quoteWrap.style.transition = 'opacity 2s ease, transform 2s ease';
-
-      setTimeout(function() {
-        quoteWrap.style.opacity = '1';
-        quoteWrap.style.transform = 'translateY(0)';
-      }, 400);
-    });
-  </script>
+  <div class="grid-container" id="photo-grid">
+    <!-- Photos injected by JS -->
+  </div>
 
   <!-- ════════════════════════════════════════
-       ABOUT SECTION
+       LIGHTBOX (SHOOT VIEWER)
   ════════════════════════════════════════ -->
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header fade-in">
-      <span class="section-label">About</span>
-      <span class="section-rule"></span>
-    </div>
-    <div class="about-grid">
-      <div class="about-image fade-in">
-        <img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/Headshot.PNG" alt="Glen Edward" />
+  <div id="lightbox">
+    <div class="lightbox-inner">
+      <div class="lightbox-header">
+        <h2 class="lightbox-title" id="lightbox-title"></h2>
+        <button class="lightbox-close" onclick="closeLightbox()">Close &times;</button>
       </div>
-      <div class="about-text fade-in">
-        <p>Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.</p>
-        <p>seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.</p>
-        <p>This work is still becoming. But it is rooted in a deep commitment to the people, stories, and lives that made it possible.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       RESEARCH SECTION
-  ════════════════════════════════════════ -->
-  <!-- RESEARCH -->
-  <section id="research">
-    <div class="section-header fade-in">
-      <span class="section-label">Research</span>
-      <span class="section-rule"></span>
-    </div>
-    <div class="research-grid fade-in">
-      <div class="research-item" style="grid-column: 1 / -1; max-width: 780px;">
-        <p class="research-type">Milestone 1 &middot; In Progress</p>
-        <h3 class="research-title">More Than the First Year: Queer Students Narrating Belonging Across Early College Transition Through Photovoice</h3>
-        <p class="research-desc">This study explores how queer first and second year students narrate and make meaning of belonging across their early college experience. Using Photovoice as a participatory research method, the study centers queer students as visual and narrative storytellers, moving beyond first-year transition frameworks to examine how belonging unfolds, shifts, and is contested over time. Grounded in Queer Theory and sense of belonging scholarship, this research attends to both the relational and structural conditions that shape whether belonging for queer students is genuinely possible. Advised by Dr. Maximilian T. Schuster, University of Pittsburgh.</p>
-      </div>
-    </div>
-
-    <p class="fade-in" style="margin-top:3rem;margin-bottom:1.25rem;font-size:0.95rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600;text-decoration:underline;text-underline-offset:4px;">Published Works</p>
-    <div class="research-grid fade-in">
-      <div class="research-item">
-        <p class="research-type">CRT Collective &mdash; The Bell Ringer, 2025</p>
-        <h3 class="research-title">Through the Lens: Capturing the 2020 Huntington Beach Riot</h3>
-        <p class="research-desc">A personal reflection on photographing a Black Lives Matter protest in Huntington Beach, California documenting resistance, visibility, and the ongoing fight for racial and social justice.</p>
-        <a href="https://crtcollective.org/the-bell-ringer-blog-posts-through-the-lens-capturing-the-2020-huntington-beach-riot/" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">Read &rarr;</a>
-      </div>
-      <div class="research-item">
-        <p class="research-type">Loud &amp; Queer Gallery, 2026</p>
-        <h3 class="research-title">Bayard Rustin</h3>
-        <p class="research-desc">A written tribute to Bayard Rustin the queer Black organizer whose brilliance made the 1963 March on Washington possible, and whose erasure from history reflects the ongoing cost of intersectional identity.</p>
-        <a href="https://loudandqueer.co.uk/gallery/bayard-rustin" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">Read &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       PHOTOGRAPHY SECTION
-  ════════════════════════════════════════ -->
-  <!-- PHOTOGRAPHY -->
-  <section id="photography">
-    <div class="section-header fade-in">
-      <span class="section-label">Photography</span>
-      <span class="section-rule"></span>
-    </div>
-
-    <div class="album-grid fade-in">
-      <div class="album-card" onclick="openAlbum('people')">
-        <div class="album-cover" id="cover-people" style="position:relative;">
-          <div class="album-overlay">
-            <span class="album-name">People</span>
-            <span class="album-view">View Album &rarr;</span>
-          </div>
-        </div>
-        <p class="album-meta">People</p>
-      </div>
-      <div class="album-card" onclick="openAlbum('places')">
-        <div class="album-cover" id="cover-places" style="position:relative;">
-          <div class="album-overlay">
-            <span class="album-name">Places</span>
-            <span class="album-view">View Album &rarr;</span>
-          </div>
-        </div>
-        <p class="album-meta">Places</p>
-      </div>
-      <div class="album-card" onclick="openAlbum('perspective')">
-        <div class="album-cover" id="cover-perspective" style="position:relative;">
-          <div class="album-overlay">
-            <span class="album-name">Perspective</span>
-            <span class="album-view">View Album &rarr;</span>
-          </div>
-        </div>
-        <p class="album-meta">Perspective</p>
-      </div>
-    </div>
-
-    <p class="photo-note fade-in">
-      Shot primarily on Fujifilm X-H2 and X-Pro 3. More work available on <a href="https://www.instagram.com/seenbyglen/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">Instagram</a>.
-    </p>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       LIGHTBOX (PHOTO VIEWER)
-  ════════════════════════════════════════ -->
-  <!-- LIGHTBOX -->
-  <div id="album-lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(28,28,26,0.96);z-index:1000;overflow-y:auto;">
-    <div style="max-width:1100px;margin:0 auto;padding:4rem 2rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;">
-        <h2 id="lightbox-title" style="font-family:var(--serif);font-size:2rem;font-weight:300;color:#FAFAF8;"></h2>
-        <button onclick="closeAlbum()" style="background:none;border:none;color:#FAFAF8;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;opacity:0.7;">Close &times;</button>
-      </div>
-      <div id="lightbox-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;"></div>
+      <div class="lightbox-grid" id="lightbox-grid"></div>
     </div>
   </div>
 
   <!-- ════════════════════════════════════════
-       CV SECTION
-  ════════════════════════════════════════ -->
-  <!-- CV -->
-  <section id="cv">
-    <div class="section-header fade-in">
-      <span class="section-label">CV</span>
-      <span class="section-rule"></span>
-    </div>
-    <div class="fade-in" style="display:flex;flex-direction:column;align-items:flex-start;gap:1rem;">
-      <p style="font-family:var(--serif);font-size:1.35rem;font-style:italic;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7;">A full record of my academic, professional, and creative work.</p>
-      <a href="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/Glen%20Edward%20CV_Ver.Mar%202026.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.85rem 2rem;border:1px solid var(--accent);color:var(--accent);font-family:var(--sans);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,color 0.25s;" onmouseover="this.style.background='var(--accent)';this.style.color='#FAFAF8';" onmouseout="this.style.background='transparent';this.style.color='var(--accent)';">View CV &rarr;</a>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       CONTACT SECTION
-  ════════════════════════════════════════ -->
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-header fade-in">
-      <span class="section-label">Contact</span>
-      <span class="section-rule"></span>
-    </div>
-    <div class="contact-layout">
-      <div class="fade-in">
-        <h2 class="contact-heading">Let's be in touch.</h2>
-        <p class="contact-note">Whether you're interested in my research, photography work, or just want to connect, I'd love to hear from you. I'm also open to portrait commissions and collaborative projects.</p>
-      </div>
-      <form class="contact-form fade-in" onsubmit="return false;">
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input class="form-input" type="text" placeholder="Your name" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" rows="5" placeholder="What's on your mind?"></textarea>
-        </div>
-        <button class="form-submit" type="submit">Send message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <!-- FOOTER -->
-  <footer class="footer">
+  <footer>
     <span>&copy; 2026 Glen Edward. All rights reserved.</span>
-    <span>Pittsburgh, PA</span>
-    <span style="font-family:var(--serif);font-style:italic;font-size:0.95rem;color:#82896E;">Seeing people. Centering stories.</span>
-    <span><a href="https://www.instagram.com/seenbyglen/" target="_blank" rel="noopener" style="text-decoration:none;"><img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/instagram-logo.png" alt="Instagram" style="width:24px;height:24px;opacity:0.75;filter:brightness(2);display:block;" /></a></span>
+    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;">Seeing people. Centering stories.</span>
+    <span><a href="https://www.instagram.com/seenbyglen/" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/instagram-logo.png" alt="Instagram" style="width:20px;height:20px;opacity:0.6;vertical-align:middle;" />
+    </a></span>
   </footer>
 
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════════ -->
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
 
-  <script>
-    const albums = {
-      people: {
-        title: 'People',
+    // ── SHOOTS DATA ──────────────────────────
+    // Each shoot has a name, a cover photo, and an array of photos.
+    // To add a new shoot, copy a shoot block and fill in your photo URLs.
+    // To add photos to an existing shoot, add more objects to its photos array.
+
+    const shoots = [
+      {
+        id: 'self-portrait',
+        name: 'Self Portrait',
+        cover: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg',
         photos: [
-          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg', caption: 'People, 2025' },
-          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5381.jpeg', caption: 'People, 2025' },
-          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5382.jpeg', caption: 'People, 2025' }
+          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg' },
+          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5381.jpeg' },
+          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5382.jpeg' }
         ]
       },
-      places: {
-        title: 'Places',
-        photos: []
+      {
+        id: 'placeholder-1',
+        name: 'People',
+        cover: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80' }
+        ]
       },
-      perspective: {
-        title: 'Perspective',
-        photos: []
-      }
-    };
+      {
+        id: 'placeholder-2',
+        name: 'Places',
+        cover: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80' }
+        ]
+      },
+      {
+        id: 'placeholder-3',
+        name: 'Perspective',
+        cover: 'https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1504700610630-ac6aba3536d3?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1495121553079-4c61bcce1894?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?w=800&q=80' }
+        ]
+      },
+      {
+        id: 'placeholder-4',
+        name: 'Intimacy',
+        cover: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800&q=80' }
+        ]
+      },
+      {
+        id: 'placeholder-5',
+        name: 'Becoming',
+        cover: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=800&q=80' }
+        ]
+      },
+      {
+        id: 'placeholder-6',
+        name: 'Witness',
+        cover: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80',
+        photos: [
+          { url: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=800&q=80' },
+          { url: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=800&q=80' }
+        ]
+      },
+      // ── ADD MORE SHOOTS BELOW ──
+      // {
+      //   id: 'shoot-name',
+      //   name: 'Shoot Name',
+      //   cover: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/YOUR-COVER-PHOTO.jpeg',
+      //   photos: [
+      //     { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/PHOTO1.jpeg' },
+      //     { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/PHOTO2.jpeg' },
+      //   ]
+      // },
+    ];
 
-    function openAlbum(id) {
-      const album = albums[id];
-      document.getElementById('lightbox-title').textContent = album.title;
-      const grid = document.getElementById('lightbox-grid');
-      if (album.photos.length === 0) {
-        grid.innerHTML = '<p style="color:rgba(250,250,248,0.5);font-size:0.9rem;grid-column:1/-1;text-align:center;padding:4rem 0;">Photos coming soon.</p>';
-      } else {
-        grid.innerHTML = album.photos.map(p => `
-          <div style="aspect-ratio:3/4;overflow:hidden;">
-            <img src="${p.url}" alt="${p.caption}" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    // ── SHUFFLE FUNCTION ─────────────────────
+    function shuffle(arr) {
+      return arr
+        .map(item => ({ item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ item }) => item);
+    }
+
+    // ── BUILD GRID ───────────────────────────
+    function buildGrid() {
+      const grid = document.getElementById('photo-grid');
+
+      // Collect all cover photos, shuffled randomly
+      const allCovers = shuffle(shoots);
+
+      allCovers.forEach(shoot => {
+        const item = document.createElement('div');
+        item.className = 'grid-item';
+        item.onclick = () => openLightbox(shoot.id);
+        item.innerHTML = `
+          <img src="${shoot.cover}" alt="${shoot.name}" loading="lazy" />
+          <div class="grid-item-overlay">
+            <span class="grid-item-label">${shoot.name}</span>
           </div>
-        `).join('');
-      }
-      document.getElementById('album-lightbox').style.display = 'block';
+        `;
+        grid.appendChild(item);
+      });
+    }
+
+    // ── LIGHTBOX ─────────────────────────────
+    function openLightbox(id) {
+      const shoot = shoots.find(s => s.id === id);
+      if (!shoot) return;
+
+      document.getElementById('lightbox-title').textContent = shoot.name;
+      const grid = document.getElementById('lightbox-grid');
+      grid.innerHTML = shoot.photos.map(p =>
+        `<img src="${p.url}" alt="${shoot.name}" loading="lazy" />`
+      ).join('');
+
+      document.getElementById('lightbox').style.display = 'block';
       document.body.style.overflow = 'hidden';
     }
 
-    function closeAlbum() {
-      document.getElementById('album-lightbox').style.display = 'none';
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
       document.body.style.overflow = '';
     }
 
-    document.getElementById('album-lightbox').addEventListener('click', function(e) {
-      if (e.target === this) closeAlbum();
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
     });
-  </script>
 
-  <script>
-    function startCoverRotation(albumId) {
-      const album = albums[albumId];
-      if (!album || album.photos.length === 0) return;
-      const cover = document.getElementById('cover-' + albumId);
-      if (!cover) return;
-
-      const imgA = document.createElement('img');
-      const imgB = document.createElement('img');
-      [imgA, imgB].forEach(img => {
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:opacity 1.4s ease-in-out;';
-        cover.insertBefore(img, cover.firstChild);
-      });
-
-      let index = 0;
-      let active = imgA;
-      let inactive = imgB;
-
-      function crossfade() {
-        const next = new Image();
-        next.src = album.photos[index % album.photos.length].url;
-        next.onload = function() {
-          inactive.src = next.src;
-          inactive.style.opacity = '1';
-          active.style.opacity = '0';
-          const temp = active;
-          active = inactive;
-          inactive = temp;
-          index++;
-        };
-      }
-
-      const first = new Image();
-      first.src = album.photos[0].url;
-      first.onload = function() {
-        imgA.src = first.src;
-        imgA.style.opacity = '1';
-        imgB.style.opacity = '0';
-        index = 1;
-        setInterval(crossfade, 4500);
-      };
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      startCoverRotation('people');
-      startCoverRotation('places');
-      startCoverRotation('perspective');
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
     });
-  </script>
 
+    // ── INIT ─────────────────────────────────
+    buildGrid();
+
+  </script>
 </body>
 </html>
