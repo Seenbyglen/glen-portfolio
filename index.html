@@ -722,7 +722,8 @@
     <!-- Album Grid -->
     <div class="album-grid fade-in">
       <div class="album-card" onclick="openAlbum('street')">
-        <div class="album-cover">
+        <div class="album-cover" id="cover-street">
+          <img id="cover-img-street" src="" alt="Street" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;" />
           <div class="album-overlay">
             <span class="album-name">Street</span>
             <span class="album-view">View Album &rarr;</span>
@@ -731,7 +732,8 @@
         <p class="album-meta">Street Photography</p>
       </div>
       <div class="album-card" onclick="openAlbum('portraits')">
-        <div class="album-cover">
+        <div class="album-cover" id="cover-portraits" style="position:relative;">
+          <img id="cover-img-portraits" src="" alt="Portraits" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;" />
           <div class="album-overlay">
             <span class="album-name">Portraits</span>
             <span class="album-view">View Album &rarr;</span>
@@ -874,6 +876,35 @@
 
     document.getElementById('album-lightbox').addEventListener('click', function(e) {
       if (e.target === this) closeAlbum();
+    });
+  </script>
+
+  <script>
+    // Rotating album covers
+    function startCoverRotation(albumId) {
+      const album = albums[albumId];
+      if (!album || album.photos.length === 0) return;
+      const img = document.getElementById('cover-img-' + albumId);
+      if (!img) return;
+      let index = 0;
+
+      function showNext() {
+        const next = new Image();
+        next.src = album.photos[index % album.photos.length].url;
+        next.onload = function() {
+          img.src = next.src;
+          img.style.opacity = '1';
+        };
+        index++;
+      }
+
+      showNext();
+      setInterval(showNext, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      startCoverRotation('street');
+      startCoverRotation('portraits');
     });
   </script>
 </body>
