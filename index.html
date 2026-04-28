@@ -856,23 +856,23 @@
 
   <script>
     const albums = {
-      People: {
-        title: 'People',
+      people: {
+        title: 'people',
         photos: [
            { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg', caption: 'People, 2025' },
           { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5381.jpeg', caption: 'People, 2025' },
           { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5382.jpeg', caption: 'People, 2025' }
         ]
       },
-      Places: {
-        title: 'Places',
+      places: {
+        title: 'places',
         photos: []
             // Add your photo URLs here e.g.:
           // { url: 'https://your-image-url.jpg', caption: 'Caption here' }
         ]
       },
-     Perspective: {
-        title: 'Perspective',
+     perspective: {
+        title: 'perspective',
         photos: []
       }
     };
@@ -952,9 +952,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      startCoverRotation('street');
-      startCoverRotation('portraits');
-      startCoverRotation('untitled');
+      startCoverRotation('people');
+      startCoverRotation('places');
+      startCoverRotation('perspective');
     });
   </script>
 </body>
