@@ -85,35 +85,6 @@
       text-align: center;
     }
 
-
-    .hero-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-      font-weight: 400;
-    }
-
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-tagline {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
-    }
-
     .hero-scroll {
       margin-top: 4rem;
       display: flex;
@@ -139,32 +110,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
-    .hero-quote blockquote {
-      font-family: var(--serif);
-      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
-      font-style: italic;
-      line-height: 1.75;
-      color: var(--text);
-      margin: 0 0 0.75rem 0;
-    }
-
-    .hero-quote cite {
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-style: normal;
-      opacity: 0;
-      transition: opacity 0.8s ease 0.3s;
-    }
-
-    .hero-quote cite.visible {
-      opacity: 1;
-    }
-
-
-
 
     /* ── ALBUMS ─────────────────────────────────────── */
     .album-grid {
@@ -260,14 +205,6 @@
       background: var(--border);
     }
 
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(2.25rem, 4vw, 3.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
     /* ── ABOUT ──────────────────────────────────────── */
     #about { background: var(--bg-alt); }
 
@@ -288,78 +225,8 @@
 
     .about-text p:last-child { margin-bottom: 0; }
 
-    .about-details {
-      padding-top: 1rem;
-    }
-
-    .detail-block {
-      padding: 1.75rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .detail-block:last-child { border-bottom: 1px solid var(--border); }
-
-    .detail-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-weight: 400;
-    }
-
-    .detail-value {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-
     /* ── PHOTOGRAPHY ────────────────────────────────── */
     #photography {}
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .photo-item {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg-alt);
-      cursor: pointer;
-      aspect-ratio: 3 / 4;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      padding: 1.25rem;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .photo-item:hover .photo-placeholder {
-      transform: scale(1.02);
-    }
-
-    .photo-caption {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
 
     .photo-note {
       margin-top: 2.5rem;
@@ -407,56 +274,6 @@
       font-size: 0.92rem;
       color: var(--muted);
       line-height: 1.75;
-    }
-
-    /* ── CV ─────────────────────────────────────────── */
-    #cv {}
-
-    .cv-viewer-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .cv-viewer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .cv-viewer-label {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .cv-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--text);
-      padding: 0.75rem 1.5rem;
-      transition: background 0.2s, color 0.2s;
-      font-weight: 400;
-    }
-
-    .cv-download:hover {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .cv-iframe {
-      width: 100%;
-      height: 80vh;
-      min-height: 600px;
-      border: 1px solid var(--border);
-      display: block;
     }
 
     /* ── CONTACT ────────────────────────────────────── */
@@ -580,21 +397,13 @@
       nav .nav-links { gap: 1.5rem; }
       section { padding: 5rem 2rem; }
       #home { padding: 0 2rem 5rem; }
-      .about-grid,
-      .cv-layout,
       .contact-layout,
       .research-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-      .photo-item:nth-child(1) { grid-row: unset; }
-      .photo-item:nth-child(5) { grid-column: unset; }
-      .photo-item:nth-child(1) .photo-placeholder { min-height: unset; }
-      .photo-item:nth-child(5) .photo-placeholder { aspect-ratio: 4/3; }
       .footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
-      .photo-grid { grid-template-columns: 1fr; }
 
       #home {
         padding: 5rem 1.5rem 3rem;
@@ -646,24 +455,16 @@
     <div class="hero-quote">
       <p id="typewriter-text" style="font-family:var(--serif);font-size:clamp(1.25rem, 5vw, 2.8rem);font-style:italic;line-height:1.75;color:var(--text);margin:0;"></p>
     </div>
-
     <p class="hero-scroll fade-in">Scroll to explore</p>
   </section>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const el = document.getElementById('typewriter-text');
-      const cite = document.getElementById('typewriter-cite');
-      const cursor = el.querySelector('.typewriter-cursor');
       const quoteWrap = document.querySelector('.hero-quote');
 
-      // Remove cursor
-      if (cursor) cursor.remove();
+      el.innerHTML = '\u201cTo see someone and center their story is to say: you were here, you mattered, and I was paying attention.\u201d <span style="font-family:var(--sans);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;font-style:normal;color:var(--accent);vertical-align:middle;">&nbsp;&mdash; Glen Edward</span>';
 
-      // Set full quote and attribution inline
-      el.innerHTML = '“To see someone and center their story is to say: you were here, you mattered, and I was paying attention.” <span style="font-family:var(--sans);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;font-style:normal;color:var(--accent);vertical-align:middle;">&nbsp;&mdash; Glen Edward</span>';
-
-      // Fade entire quote block together
       quoteWrap.style.opacity = '0';
       quoteWrap.style.transform = 'translateY(12px)';
       quoteWrap.style.transition = 'opacity 2s ease, transform 2s ease';
@@ -683,18 +484,11 @@
     </div>
     <div class="about-grid">
       <div class="about-text fade-in">
-        <p>
-          Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.
-        </p>
-        <p>
-          seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.
-        </p>
-        <p>
-          This work is still becoming. But it is rooted in a deep commitment to the people, stories, and lives that made it possible.
-        </p>
+        <p>Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.</p>
+        <p>seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.</p>
+        <p>This work is still becoming. But it is rooted in a deep commitment to the people, stories, and lives that made it possible.</p>
         <p><em>Seeing people. Centering stories.</em></p>
       </div>
-
     </div>
   </section>
 
@@ -706,25 +500,24 @@
     </div>
     <div class="research-grid fade-in">
       <div class="research-item" style="grid-column: 1 / -1; max-width: 780px;">
-        <p class="research-type">Milestone 1 · In Progress</p>
+        <p class="research-type">Milestone 1 &middot; In Progress</p>
         <h3 class="research-title">More Than the First Year: Queer Students Narrating Belonging Across Early College Transition Through Photovoice</h3>
         <p class="research-desc">This study explores how queer first and second year students narrate and make meaning of belonging across their early college experience. Using Photovoice as a participatory research method, the study centers queer students as visual and narrative storytellers, moving beyond first-year transition frameworks to examine how belonging unfolds, shifts, and is contested over time. Grounded in Queer Theory and sense of belonging scholarship, this research attends to both the relational and structural conditions that shape whether belonging for queer students is genuinely possible. Advised by Dr. Maximilian T. Schuster, University of Pittsburgh.</p>
       </div>
     </div>
 
-    <!-- Published Works subsection -->
     <p class="fade-in" style="margin-top:3rem;margin-bottom:1.25rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:400;">Published Works</p>
     <div class="research-grid fade-in">
       <div class="research-item">
         <p class="research-type">CRT Collective &mdash; The Bell Ringer, 2025</p>
         <h3 class="research-title">Through the Lens: Capturing the 2020 Huntington Beach Riot</h3>
-        <p class="research-desc">A personal reflection on photographing a Black Lives Matter protest in Huntington Beach, California &mdash; documenting resistance, visibility, and the ongoing fight for racial and social justice.</p>
+        <p class="research-desc">A personal reflection on photographing a Black Lives Matter protest in Huntington Beach, California documenting resistance, visibility, and the ongoing fight for racial and social justice.</p>
         <a href="https://crtcollective.org/the-bell-ringer-blog-posts-through-the-lens-capturing-the-2020-huntington-beach-riot/" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">Read &rarr;</a>
       </div>
       <div class="research-item">
         <p class="research-type">Loud &amp; Queer Gallery, 2026</p>
         <h3 class="research-title">Bayard Rustin</h3>
-        <p class="research-desc">A written tribute to Bayard Rustin &mdash; the queer Black organizer whose brilliance made the 1963 March on Washington possible, and whose erasure from history reflects the ongoing cost of intersectional identity.</p>
+        <p class="research-desc">A written tribute to Bayard Rustin the queer Black organizer whose brilliance made the 1963 March on Washington possible, and whose erasure from history reflects the ongoing cost of intersectional identity.</p>
         <a href="https://loudandqueer.co.uk/gallery/bayard-rustin" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">Read &rarr;</a>
       </div>
     </div>
@@ -737,37 +530,33 @@
       <span class="section-rule"></span>
     </div>
 
-    <!-- Album Grid -->
     <div class="album-grid fade-in">
       <div class="album-card" onclick="openAlbum('people')">
-        <div class="album-cover" id="cover-street">
-          <img id="cover-img-street" src="" alt="Street" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;" />
+        <div class="album-cover" id="cover-people" style="position:relative;">
           <div class="album-overlay">
-            <span class="album-name">people</span>
+            <span class="album-name">People</span>
             <span class="album-view">View Album &rarr;</span>
           </div>
         </div>
-        <p class="album-meta">people</p>
+        <p class="album-meta">People</p>
       </div>
       <div class="album-card" onclick="openAlbum('places')">
-        <div class="album-cover" id="cover-portraits" style="position:relative;">
-          <img id="cover-img-portraits" src="" alt="Portraits" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;" />
+        <div class="album-cover" id="cover-places" style="position:relative;">
           <div class="album-overlay">
-            <span class="album-name">places</span>
+            <span class="album-name">Places</span>
             <span class="album-view">View Album &rarr;</span>
           </div>
         </div>
-        <p class="album-meta">places</p>
+        <p class="album-meta">Places</p>
       </div>
       <div class="album-card" onclick="openAlbum('perspective')">
-        <div class="album-cover" id="cover-untitled" style="position:relative;">
-          <img id="cover-img-untitled" src="" alt="Untitled" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;" />
+        <div class="album-cover" id="cover-perspective" style="position:relative;">
           <div class="album-overlay">
-            <span class="album-name">perspective</span>
+            <span class="album-name">Perspective</span>
             <span class="album-view">View Album &rarr;</span>
           </div>
         </div>
-        <p class="album-meta">perspective</p>
+        <p class="album-meta">Perspective</p>
       </div>
     </div>
 
@@ -783,10 +572,7 @@
         <h2 id="lightbox-title" style="font-family:var(--serif);font-size:2rem;font-weight:300;color:#FAFAF8;"></h2>
         <button onclick="closeAlbum()" style="background:none;border:none;color:#FAFAF8;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;opacity:0.7;">Close &times;</button>
       </div>
-      <div id="lightbox-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
-        <!-- photos injected by JS -->
-      </div>
-
+      <div id="lightbox-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;"></div>
     </div>
   </div>
 
@@ -811,9 +597,7 @@
     <div class="contact-layout">
       <div class="fade-in">
         <h2 class="contact-heading">Let's be in touch.</h2>
-        <p class="contact-note">
-          Whether you're interested in my research, photography work, or just want to connect   I'd love to hear from you. I'm also open to portrait commissions and collaborative projects.
-        </p>
+        <p class="contact-note">Whether you're interested in my research, photography work, or just want to connect, I'd love to hear from you. I'm also open to portrait commissions and collaborative projects.</p>
       </div>
       <form class="contact-form fade-in" onsubmit="return false;">
         <div class="form-group">
@@ -843,36 +627,28 @@
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
-
-
 
   <script>
     const albums = {
       people: {
-        title: 'people',
+        title: 'People',
         photos: [
-           { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg', caption: 'People, 2025' },
+          { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5377.jpeg', caption: 'People, 2025' },
           { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5381.jpeg', caption: 'People, 2025' },
           { url: 'https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/IMG_5382.jpeg', caption: 'People, 2025' }
         ]
       },
       places: {
-        title: 'places',
+        title: 'Places',
         photos: []
-            // Add your photo URLs here e.g.:
-          // { url: 'https://your-image-url.jpg', caption: 'Caption here' }
-        ]
       },
-     perspective: {
-        title: 'perspective',
+      perspective: {
+        title: 'Perspective',
         photos: []
       }
     };
@@ -905,14 +681,12 @@
   </script>
 
   <script>
-    // Soft rotating album covers with crossfade
     function startCoverRotation(albumId) {
       const album = albums[albumId];
       if (!album || album.photos.length === 0) return;
       const cover = document.getElementById('cover-' + albumId);
       if (!cover) return;
 
-      // Create two images for crossfade
       const imgA = document.createElement('img');
       const imgB = document.createElement('img');
       [imgA, imgB].forEach(img => {
@@ -931,7 +705,6 @@
           inactive.src = next.src;
           inactive.style.opacity = '1';
           active.style.opacity = '0';
-          // swap
           const temp = active;
           active = inactive;
           inactive = temp;
@@ -939,7 +712,6 @@
         };
       }
 
-      // Preload first image immediately
       const first = new Image();
       first.src = album.photos[0].url;
       first.onload = function() {
@@ -957,5 +729,6 @@
       startCoverRotation('perspective');
     });
   </script>
+
 </body>
 </html>
