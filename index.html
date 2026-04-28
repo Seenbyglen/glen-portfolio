@@ -213,10 +213,21 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      max-width: 680px;
-      gap: 5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: start;
+    }
+
+    .about-image {
+      position: sticky;
+      top: 7rem;
+    }
+
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
     }
 
     .about-text p {
@@ -401,8 +412,10 @@
       nav .nav-links { gap: 1.5rem; }
       section { padding: 5rem 2rem; }
       #home { padding: 0 2rem 5rem; }
+      .about-grid,
       .contact-layout,
       .research-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image { position: static; }
       .footer { flex-direction: column; gap: 0.75rem; text-align: center; }
     }
 
@@ -496,6 +509,9 @@
       <span class="section-rule"></span>
     </div>
     <div class="about-grid">
+      <div class="about-image fade-in">
+        <img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/Headshot.png" alt="Glen Edward" />
+      </div>
       <div class="about-text fade-in">
         <p>Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.</p>
         <p>seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.</p>
