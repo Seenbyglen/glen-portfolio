@@ -12,12 +12,12 @@
 
     :root {
       --bg: #FAFAF8;
-      --bg-alt: #F3F1EC;
-      --text: #1C1C1A;
-      --muted: #7A786F;
-      --accent: #8B6B4A;
-      --accent-light: #C4A882;
-      --border: #E2DDD6;
+      --bg-alt: #DDCBB7;
+      --text: #264025;
+      --muted: #7B4B36;
+      --accent: #AD6B4B;
+      --accent-light: #82896E;
+      --border: #D4C4B0;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Jost', system-ui, sans-serif;
     }
@@ -29,8 +29,8 @@
       background: var(--bg);
       color: var(--text);
       font-weight: 300;
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 18px;
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -195,7 +195,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
-      font-weight: 400;
+      font-weight: 700;
       white-space: nowrap;
     }
 
@@ -220,7 +220,7 @@
       color: var(--text);
       line-height: 1.85;
       margin-bottom: 1.25rem;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
     }
 
     .about-text p:last-child { margin-bottom: 0; }
@@ -232,8 +232,9 @@
       margin-top: 2.5rem;
       font-family: var(--serif);
       font-style: italic;
+      font-weight: 300;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.25rem;
     }
 
     /* ── RESEARCH ───────────────────────────────────── */
@@ -271,19 +272,19 @@
     }
 
     .research-desc {
-      font-size: 0.92rem;
+      font-size: 1rem;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     /* ── CONTACT ────────────────────────────────────── */
     #contact {
-      background: var(--text);
+      background: #264025;
       color: var(--bg);
     }
 
     #contact .section-label { color: var(--accent-light); }
-    #contact .section-rule { background: #3A3A36; }
+    #contact .section-rule { background: #3D5C3C; }
 
     .contact-layout {
       display: grid;
@@ -302,7 +303,7 @@
 
     .contact-note {
       font-size: 0.95rem;
-      color: #9A9890;
+      color: #A8B5A2;
       line-height: 1.75;
     }
 
@@ -330,7 +331,7 @@
     .form-textarea {
       background: transparent;
       border: none;
-      border-bottom: 1px solid #3A3A36;
+      border-bottom: 1px solid #3D5C3C;
       padding: 0.75rem 0;
       color: var(--bg);
       font-family: var(--sans);
@@ -342,7 +343,7 @@
     }
 
     .form-input::placeholder,
-    .form-textarea::placeholder { color: #4A4A46; }
+    .form-textarea::placeholder { color: #5A7A58; }
 
     .form-input:focus,
     .form-textarea:focus { border-color: var(--accent-light); }
@@ -369,13 +370,13 @@
     }
 
     .footer {
-      background: var(--text);
-      color: #4A4A46;
+      background: #264025;
+      color: #82896E;
       padding: 2rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #2A2A26;
+      border-top: 1px solid #1a2b19;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
     }
@@ -487,7 +488,6 @@
         <p>Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.</p>
         <p>seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.</p>
         <p>This work is still becoming. But it is rooted in a deep commitment to the people, stories, and lives that made it possible.</p>
-        <p><em>Seeing people. Centering stories.</em></p>
       </div>
     </div>
   </section>
@@ -506,7 +506,7 @@
       </div>
     </div>
 
-    <p class="fade-in" style="margin-top:3rem;margin-bottom:1.25rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:400;">Published Works</p>
+    <p class="fade-in" style="margin-top:3rem;margin-bottom:1.25rem;font-size:0.95rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:600;text-decoration:underline;text-underline-offset:4px;">Published Works</p>
     <div class="research-grid fade-in">
       <div class="research-item">
         <p class="research-type">CRT Collective &mdash; The Bell Ringer, 2025</p>
@@ -583,7 +583,7 @@
       <span class="section-rule"></span>
     </div>
     <div class="fade-in" style="display:flex;flex-direction:column;align-items:flex-start;gap:1rem;">
-      <p style="font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--muted);max-width:480px;line-height:1.7;">A full record of my academic, professional, and creative work.</p>
+      <p style="font-family:var(--serif);font-size:1.35rem;font-style:italic;font-weight:300;color:var(--muted);max-width:480px;line-height:1.7;">A full record of my academic, professional, and creative work.</p>
       <a href="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/Glen%20Edward%20CV_Ver.Mar%202026.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.75rem;padding:0.85rem 2rem;border:1px solid var(--accent);color:var(--accent);font-family:var(--sans);font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,color 0.25s;" onmouseover="this.style.background='var(--accent)';this.style.color='#FAFAF8';" onmouseout="this.style.background='transparent';this.style.color='var(--accent)';">View CV &rarr;</a>
     </div>
   </section>
@@ -621,7 +621,8 @@
   <footer class="footer">
     <span>&copy; 2026 Glen Edward. All rights reserved.</span>
     <span>Pittsburgh, PA</span>
-    <span>Shot on Fujifilm X-H2 &amp; X-Pro 3 &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/seenbyglen/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-light);">@seenbyglen</a> on Instagram</span>
+    <span style="font-family:var(--serif);font-style:italic;font-size:0.95rem;color:#82896E;">Seeing people. Centering stories.</span>
+    <span><a href="https://www.instagram.com/seenbyglen/" target="_blank" rel="noopener" style="text-decoration:none;"><img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/instagram-logo.png" alt="Instagram" style="width:24px;height:24px;opacity:0.75;filter:brightness(2);display:block;" /></a></span>
   </footer>
 
   <script>
