@@ -265,7 +265,69 @@
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #F2F4F3;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,9,8,0.98);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      font-style: italic;
+      color: #F2F4F3;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: #A9927D; }
   </style>
 </head>
 <body>
@@ -280,7 +342,21 @@
       <li><a href="research.html">Research</a></li>
       <li><a href="info.html" class="active">Info</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- ════════════════════════════════════════
+       MOBILE MENU
+  ════════════════════════════════════════ -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="toggleMenu()">Photography</a>
+    <a href="research.html" onclick="toggleMenu()">Research</a>
+    <a href="info.html" onclick="toggleMenu()">Info</a>
+  </div>
 
   <!-- ════════════════════════════════════════
        ABOUT SECTION
@@ -295,9 +371,7 @@
         <img src="https://raw.githubusercontent.com/Seenbyglen/glen-portfolio/main/Headshot.PNG" alt="Glen Edward" />
       </div>
       <div class="about-text fade-in">
-        <p>Welcome. I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where I focus on first-year college transitions and the out-of-classroom experiences that stay with students long after they graduate. My doctoral research in Higher Education uses visual ethnography to center the voices of queer and trans students navigating the early moments of college life.</p>
-        <p>seen&amp;centered is where my scholarship, photography, and practice live together. Through still photography I create images that hold space for identity, intimacy, and becoming. Through my research I explore how queer students find belonging in higher education and what it means to arrive somewhere and to stay yourself.</p>
-        <p>This work is still becoming. But it is rooted in a deep commitment to the people, stories, and lives that made it possible.</p>
+        <p>I am a queer Black scholar-practitioner, first-generation college graduate, educator, and photographer. I work in Student Affairs at the University of Pittsburgh, where my doctoral research uses visual ethnography to center the voices of queer and trans students navigating belonging in early college life. seen&amp;centered is where my scholarship, photography, and practice live together.</p>
       </div>
     </div>
   </section>
@@ -367,5 +441,15 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
 </body>
 </html>
