@@ -32,6 +32,62 @@
       min-height: 100vh;
     }
 
+    /* ── SPLASH SCREEN ── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: #0A0908;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 4rem;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+
+    #splash.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash.hidden {
+      display: none;
+    }
+
+    .splash-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      font-style: italic;
+      line-height: 1.75;
+      color: #F2F4F3;
+      max-width: 700px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 2s ease, transform 2s ease;
+    }
+
+    .splash-quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .splash-attr {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #A9927D;
+      margin-top: 1rem;
+      opacity: 0;
+      transition: opacity 1s ease 1.5s;
+    }
+
+    .splash-attr.visible {
+      opacity: 1;
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -217,6 +273,16 @@
   </style>
 </head>
 <body>
+
+  <!-- ════════════════════════════════════════
+       SPLASH SCREEN / OPENING QUOTE
+  ════════════════════════════════════════ -->
+  <div id="splash">
+    <div>
+      <p class="splash-quote" id="splash-quote">"To see someone and center their story is to say: you were here, you mattered, and I was paying attention."</p>
+      <p class="splash-attr" id="splash-attr">&mdash; Glen Edward, M.Ed.</p>
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════
        NAV
