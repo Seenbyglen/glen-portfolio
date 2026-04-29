@@ -484,8 +484,37 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
+    // ── SPLASH SCREEN ────────────────────────
+    function runSplash() {
+      const splash = document.getElementById('splash');
+      const quote = document.getElementById('splash-quote');
+      const attr = document.getElementById('splash-attr');
+
+      if (!splash || !quote) {
+        buildGrid();
+        return;
+      }
+
+      // Step 1 — fade quote in after 300ms
+      setTimeout(function() {
+        quote.classList.add('visible');
+        if (attr) attr.classList.add('visible');
+      }, 300);
+
+      // Step 2 — fade splash out after 4 seconds
+      setTimeout(function() {
+        splash.classList.add('fade-out');
+      }, 4000);
+
+      // Step 3 — hide splash completely and build grid
+      setTimeout(function() {
+        splash.classList.add('hidden');
+        buildGrid();
+      }, 5600);
+    }
+
     // ── INIT ─────────────────────────────────
-    buildGrid();
+    runSplash();
 
   </script>
 </body>
